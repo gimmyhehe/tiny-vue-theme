@@ -36,11 +36,9 @@ test.describe('input组件xdesign规范', () => {
 
   test('禁用--UI截图', async ({ page }) => {
     page.on('pageerror', (exception) => expect(exception).toBeNull())
-    await page.goto('input#native')
-    const demo = page
-      .locator('#native .pc-demo')
-      .locator('p')
-      .filter({ hasText: /^disabled$/ })
+    await page.goto('input#disabled')
+    const demo = page.locator('#disabled .pc-demo')
+
     await expect(demo).toBeInViewport()
     await expect(demo).toHaveScreenshot('disabled.png')
   })
